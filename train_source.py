@@ -22,7 +22,7 @@ parser.add_argument('--num_class', default=10, type=int)
 
 parser.add_argument('--batch_size', default=256, type=int, help='train batchsize') 
 parser.add_argument('--lr', '--learning_rate', default=0.001, type=float, help='initial learning rate')
-parser.add_argument('--num_epochs', default=5, type=int)
+parser.add_argument('--num_epochs', default=100, type=int)
 parser.add_argument('--alfa', default=0.1, type=float)
 
 parser.add_argument('--seed', default=123)
