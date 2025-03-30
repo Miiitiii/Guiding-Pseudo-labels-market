@@ -8,7 +8,7 @@ from model import *
 import argparse
 import numpy as np
 import torchvision.transforms as transforms
-import wandb
+# import wandb
 from sklearn.metrics import accuracy_score
 from torch.optim.lr_scheduler import *
 from utils import *
@@ -29,7 +29,7 @@ parser.add_argument('--seed', default=123)
 parser.add_argument('--gpuid', default=0, type=int)
 
 parser.add_argument('--run_name', type=str)
-parser.add_argument('--wandb', action='store_true', help="Use wandb")
+# parser.add_argument('--wandb', action='store_true', help="Use wandb")
 
 args = parser.parse_args()
 
@@ -38,8 +38,8 @@ random.seed(args.seed)
 torch.manual_seed(args.seed)
 torch.cuda.manual_seed_all(args.seed)
 
-if args.wandb:
-    wandb.init(project="Guiding Pseudo-labels with Uncertainty Estimation for Test-Time Adaptation", name = args.run_name)
+# if args.wandb:
+#     wandb.init(project="Guiding Pseudo-labels with Uncertainty Estimation for Test-Time Adaptation", name = args.run_name)
 
 
 def smoothed_cross_entropy(logits, labels, num_classes, epsilon=0):
@@ -84,11 +84,11 @@ def train(epoch, net, optimizer, trainloader):
 
     print("Training acc = ", acc)
 
-    if args.wandb:
-        wandb.log({
-        'train_loss': loss, \
-        'train_acc': acc, \
-        }, step=epoch) 
+    # if args.wandb:
+    #     wandb.log({
+    #     'train_loss': loss, \
+    #     'train_acc': acc, \
+    #     }, step=epoch) 
     return acc
 
 def test(epoch,net , test_loader):
@@ -119,11 +119,11 @@ def test(epoch,net , test_loader):
 
     print("\n| Test Epoch #%d\t Accuracy: %.2f%%\n" %(epoch,acc))  
 
-    if args.wandb:
-        wandb.log({
-        'val_loss': loss, \
-        'val_net1_accuracy': acc, \
-        }, step=epoch)
+    # if args.wandb:
+    #     wandb.log({
+    #     'val_loss': loss, \
+    #     'val_net1_accuracy': acc, \
+    #     }, step=epoch)
     
     return acc
 
@@ -221,7 +221,7 @@ for epoch in range(args.num_epochs+1):
         best = acc
         print("Saving best!")
 
-        if args.wandb:
-            wandb.run.summary['best_acc'] = best
+        # if args.wandb:
+        #     wandb.run.summary['best_acc'] = best
 
 
