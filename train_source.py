@@ -173,12 +173,12 @@ elif args.dataset.split('/')[0] == 'domainnet':
     arch = 'resnet50'
 
 elif args.dataset.split('/')[0] == 'market':
-    train_dataset = dataset(dataset=args.dataset, root='/content/Guiding-Pseudo-labels-with-Uncertainty-Estimation-for-Source-free-Unsupervised-Domain-Adaptation/data/Market-1501-v15.09.15',
+    train_dataset = dataset(dataset=args.dataset, root='/kaggle/working/Guiding-Pseudo-labels-with-Uncertainty-Estimation-for-Source-free-Unsupervised-Domain-Adaptation/data/Market-1501-v15.09.15',
                           mode='train',
                           transform=transforms.Compose([transforms.Resize(256), transforms.RandomCrop(224), transforms.RandomHorizontalFlip(), transforms.ToTensor(), transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010))])
                           )
 
-    test_dataset = dataset(dataset=args.dataset, root='/content/Guiding-Pseudo-labels-with-Uncertainty-Estimation-for-Source-free-Unsupervised-Domain-Adaptation/data/Market-1501-v15.09.15',
+    test_dataset = dataset(dataset=args.dataset, root='/kaggle/working/Guiding-Pseudo-labels-with-Uncertainty-Estimation-for-Source-free-Unsupervised-Domain-Adaptation/data/Market-1501-v15.09.15',
                          mode='test',
                          transform=transforms.Compose([transforms.Resize(256), transforms.CenterCrop(224), transforms.ToTensor(), transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010))])
                          )
